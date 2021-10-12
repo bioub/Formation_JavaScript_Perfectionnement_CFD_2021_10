@@ -19,8 +19,6 @@ function getRandomIntInclusive(min, max) {
 }
 
 
-
-
 // importer l'API readline de Node.js
 const readline = require('readline');
 
@@ -31,7 +29,6 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-
 
 function jouer() {
   if (essais.length) {
