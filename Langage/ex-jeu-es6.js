@@ -1,28 +1,25 @@
-// ES5 mode strict
+'use strict';
 
 const Random = {
-  // ES6 : Method properties
-  get: function () {
+  get() {
     return Math.random();
   },
 
-  getArbitrary: function (min, max) {
+  getArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   },
 
-  getInt: function (min, max) {
+  getInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   },
 
-  getIntInclusive: function (min, max) {
+  getIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  // ES5 trailing comma
+  },
 };
 
 
@@ -32,51 +29,49 @@ const readline = require('readline');
 // function Jeu({min = 0, max = 100} = {}) {
 
 
-// ES6 class
-function Jeu(options = {}) {
-  const min = options.min ?? 0;
-  const max = options.max ?? 100;
+class Jeu {
+  constructor(options = {}) {
+    const min = options.min ?? 0;
+    const max = options.max ?? 100;
 
-  this._rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  this.entierAlea = Random.getInt(min, max);
-  this.essais = [];
+    this._rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+    this.entierAlea = Random.getInt(min, max);
+    this.essais = [];
+  }
+  jouer() {
+    if (this.essais.length) {
+      console.log(`Vous avez déjà joué : ${this.essais.join(' - ')} !`);
+    }
+    this._rl.question('Quel est le nombre ? ', (answer) => {
+      console.log('Vous avez saisi : ' + answer);
+
+      const entierSaisi = Number.parseInt(answer, 10);
+
+      if (Number.isNaN(entierSaisi)) {
+        console.log('Il faut saisir un entier');
+        return this.jouer();
+      }
+
+      this.essais.push(entierSaisi);
+
+      if (entierSaisi > this.entierAlea) {
+        console.log('Trop grand');
+        this.jouer();
+      } else if (entierSaisi < this.entierAlea) {
+        console.log('Trop petit');
+        this.jouer();
+      } else {
+        console.log('Gagné');
+        this._rl.close();
+      }
+
+    });
+  }
 }
 
-Jeu.prototype.jouer = function() {
-  if (this.essais.length) {
-    // ES6 Template literal
-    console.log('Vous avez déjà joué : ' + this.essais.join(' - '))
-  }
-  this._rl.question('Quel est le nombre ? ', (answer) => {
-    console.log('Vous avez saisi : ' + answer);
-
-    // ES6 utiliser parseInt de Number (MDN)
-    const entierSaisi = parseInt(answer, 10);
-
-    // ES6 utiliser isNaN de Number (MDN)
-    if (isNaN(entierSaisi)) {
-      console.log('Il faut saisir un entier');
-      return this.jouer();
-    }
-
-    this.essais.push(entierSaisi);
-
-    if (entierSaisi > this.entierAlea) {
-      console.log('Trop grand');
-      this.jouer();
-    } else if (entierSaisi < this.entierAlea) {
-      console.log('Trop petit');
-      this.jouer();
-    } else {
-      console.log('Gagné');
-      this._rl.close();
-    }
-
-  });
-};
 
 const game = new Jeu();
 game.jouer();
