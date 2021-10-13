@@ -1,4 +1,4 @@
-//       sum(1, 2)
+//          sum(1, 2)
 // function sum(a, b, c) {
 //   if (c === undefined) {
 //     c = 0;

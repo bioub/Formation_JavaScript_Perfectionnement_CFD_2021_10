@@ -2,7 +2,7 @@
 // variable qui change de valeur dans le temps
 // et que plus tard on veut afficher une valeur précédente
 function saveI(iBackup) {
-  return function () {
+  return () => {
     console.log(iBackup);
   };
 }

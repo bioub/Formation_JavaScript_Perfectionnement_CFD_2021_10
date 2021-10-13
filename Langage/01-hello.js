@@ -1,4 +1,5 @@
-const prenoms = ['Toto', 'Jean', 'Eric'];
+/** @type {string[]} */
+const prenoms = ['Romain', 'Jean', 'Eric'];
 
 /**
  * Ma fonction hello

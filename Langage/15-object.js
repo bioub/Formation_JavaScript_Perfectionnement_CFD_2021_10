@@ -81,3 +81,6 @@ const coordsD = new Coords(3, 4);
 console.log(typeof coordsC); // object
 
 console.log(coordsC.sumXY === coordsD.sumXY); // compare les références (est-ce la même fonction ?)
+
+console.log(coordsC.x);
+console.log(coordsC.sumXY());
