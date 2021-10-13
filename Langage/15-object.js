@@ -65,18 +65,17 @@ console.log(coords1 === coords2); // compare les références (est-ce le même o
 console.log(coords1.sumXY === coords2.sumXY); // compare les références (est-ce la même fonction ?)
 
 // constructor
-function Coords(x, y, z = 0) {
+function Coords2D(x, y) {
   this.x = x;
   this.y = y;
-  this.z = z;
 }
 
-Coords.prototype.sumXY = function() {
+Coords2D.prototype.sumXY = function() {
   return this.x + this.y;
 }
 
-const coordsC = new Coords(1, 2);
-const coordsD = new Coords(3, 4);
+const coordsC = new Coords2D(1, 2);
+const coordsD = new Coords2D(3, 4);
 
 console.log(typeof coordsC); // object
 
@@ -84,3 +83,50 @@ console.log(coordsC.sumXY === coordsD.sumXY); // compare les références (est-c
 
 console.log(coordsC.x);
 console.log(coordsC.sumXY());
+
+// Syntaxe alternative au point . pour accéder aux clés/valeurs d'un objet
+console['log'](coordsC['x']);
+console['log'](coordsC['sumXY']());
+
+// la syntaxe est plus dynamique
+const methodConsole = 'log';
+const coordsKey = 'x';
+console[methodConsole](coordsC[coordsKey]);
+
+// Boucler sur les propriétés
+for (const key in coordsC) {
+  if (coordsC.hasOwnProperty(key)) {
+    const value = coordsC[key];
+    console.log(key, value);
+  }
+}
+
+// Héritage jusqu'à ES5
+function Coords3D(x, y, z) {
+  Coords2D.call(this, x, y);
+  this.z = z;
+}
+
+Coords3D.prototype = Object.create(Coords2D.prototype);
+
+Coords3D.prototype.sumYZ = function() {
+  return this.y + this.z;
+};
+
+
+const coords3d = new Coords3D(1, 2, 3);
+
+// . recherche et trouve dans l'objet
+console.log(coords3d.x);
+console.log(coords3d.y);
+console.log(coords3d.z);
+
+// . recherche et trouve dans le proto de la fonction constructeur
+console.log(coords3d.sumYZ());
+
+// . recherche et trouve dans le proto de la fonction constructeur parent
+console.log(coords3d.sumXY());
+
+// . recherche et trouve dans le proto de la fonction constructeur Object
+console.log(coords3d.hasOwnProperty('x')); // true
+console.log(coords3d.hasOwnProperty('sumXY')); // false

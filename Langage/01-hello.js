@@ -1,3 +1,5 @@
+'use strict';
+
 /** @type {string[]} */
 const prenoms = ['Romain', 'Jean', 'Eric'];
 
