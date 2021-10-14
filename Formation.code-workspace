@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "APIs-Web"
+		},
+		{
+			"path": "Promises"
 		}
 	],
 	"settings": {
