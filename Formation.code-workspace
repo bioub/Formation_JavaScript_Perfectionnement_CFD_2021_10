@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "Langage"
+		},
+		{
+			"path": "APIs-Web"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "APIs-Web"
+	}
+}

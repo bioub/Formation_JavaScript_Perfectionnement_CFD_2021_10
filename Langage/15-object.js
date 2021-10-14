@@ -101,6 +101,11 @@ for (const key in coordsC) {
   }
 }
 
+// version moderne
+for (const [key, value] of Object.entries(coordsC)) {
+  console.log('loop', key, value);
+}
+
 // Héritage jusqu'à ES5
 function Coords3D(x, y, z) {
   Coords2D.call(this, x, y);

@@ -33,3 +33,17 @@ class Contact {
 
 const contact = new Contact();
 contact.helloAsync();
+
+
+const coords1 = {
+  x: 1,
+  y: 2,
+  // attention a ne pas flécher les méthodes
+  // sinon pas de this (donc this ici === globalThis ou undefined en mode strict)
+  sumXY: () => {
+    return this.x + this.y;
+  }
+};
+
+
+console.log(coords1.sumXY());

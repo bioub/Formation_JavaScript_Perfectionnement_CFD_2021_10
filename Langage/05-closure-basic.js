@@ -13,10 +13,10 @@ function externe() {
     console.log(globalScope);
   }
 
-  interne()
+  interne();
 }
 
-externe()
+externe();
 
 // pile d'appels
 // ^
