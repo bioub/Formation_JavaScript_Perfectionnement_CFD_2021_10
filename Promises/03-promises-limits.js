@@ -26,5 +26,5 @@ interval(1000).then(() => console.log(new Date));
 // les promesses ne fonctionnent que si le callback est appelé une fois
 // sinon
 // - Asynchronous Iterator (exemple Deno)
-// - RxJS
+// - RxJS (dans Angular)
 // - events / addEventListener

@@ -1,3 +1,4 @@
+// Module CommonJS
 const fs = require('fs');
 
 // SYNCHRONE
@@ -11,5 +12,4 @@ fs.readFile('.editorconfig', (err, buffer) => {
 
 // ASYNC PROMISE
 fs.promises.readFile('.editorconfig')
-  .then((buffer) => console.log(buffer.toString()))
-  .catch((err) => console.log(err))
+  .then((buffer) => console.log(buffer.toString()));

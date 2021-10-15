@@ -1,3 +1,4 @@
+// Module ECMAScript
 import { readFileSync, writeFileSync, readFile, writeFile, promises } from 'fs';
 
 // SYNCHRONE
