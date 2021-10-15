@@ -26,6 +26,9 @@ app.use(cors());
 
 // EXERCICE 1
 // SUR LE GET /todos répondre en JSON le tableau complet
+app.get('/todos', (req, res) => {
+  res.json(todos);
+});
 
 // app.post('/todos', express.json()); // créé req.body
 // app.post('/todos', (req, res) => {
@@ -48,6 +51,16 @@ app.post('/todos', express.json(), (req, res) => {
 // SUR LE DELETE /todos/:id supprimer la todo dont l'id
 // correspond (à transformer en number)
 // Pour supprimer vous pourrez utiliser findIndex et splice (Array)
+app.delete('/todos/:id', (req, res) => {
+  const id = Number(req.params.id);
+
+  const indexToDelete = todos.findIndex((todo) => todo.id === id);
+  const todoToDelete = todos[indexToDelete];
+
+  todos.splice(indexToDelete, 1);
+
+  res.json(todoToDelete);
+});
 
 app.listen(3000, () => {
   console.log('server started');
