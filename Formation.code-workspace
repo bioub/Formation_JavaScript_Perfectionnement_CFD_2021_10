@@ -11,9 +11,12 @@
 		},
 		{
 			"path": "Serveur"
+		},
+		{
+			"path": "Final-App"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "APIs-Web"
+		"liveServer.settings.multiRootWorkspaceName": "Final-App"
 	}
 }
